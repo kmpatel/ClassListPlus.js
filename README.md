@@ -4,7 +4,7 @@ A improvement to native Element.classList (plus polyfill)
 
 USAGE:
 
-{ e.g. these all work per up-to-date Element.classList specification
+e.g. these all work per up-to-date Element.classList specification
 
 	element.classList.add("native");
 	element.classList.add("also","native","form");
@@ -15,16 +15,12 @@ USAGE:
 	element.classList.toggle("native");		// toggles and return (element.classList.contains("native"))
 	element.classList.toggle("native",true);	// adds and returns true
 	element.classList.toggle("native",false);	// removes and returns false
-}
-
 
 Improves on native Element.classList, and polyfill if necessary, namely to allow 
 multiple class tokens in a single, space-delimited string.
 
-{
 `	element.classList.add("not native form");	// adds all 3 tokens: "not" "native" and "form"`
 `	element.classList.remove("not native form");	// removes all 3 tokens: "not" "native" and "form"`
-}
 
 This tweak of classList also upgrades .toggle() by allowing a class to be toggle
 between two specific names (e.g. ON and OFF). This is useful for making CSS styling
@@ -36,7 +32,6 @@ the other.  It is an alternative approach to .toggle(arg,force)
 `											//	 returns 1 if contains("OFF") in end`
 `											//	 returns 2 if contains("ON") in end`
 `											// if neither is present, no toggle occurs, returns 0`
-
 
 Finally, during the execution of this upgrade of Element.classList prototype, it can be configured to 
 pre-pend or post-pend ALL class names with a one-time-specified string.  For both performance AND
@@ -66,5 +61,3 @@ Element.classList.  It will definitely break code/frameworks that work with sepe
 works with class names either by Element.classList or by Element.className but NOT both simultaneously, 
 then there should not be any problems, including working with third-party frameworks.  
 If in doubt, however, do NOT use pre/post-pend.
-
-
