@@ -28,10 +28,11 @@ explicit-explicit, like 'on'-'off' or 'expand'-'collapse' rather than implicit-e
 ''-'collapse'.  It will ONLY toggle if either of the names are present, and will replace with 
 the other.  It is an alternative approach to .toggle(arg,force)
  
-`	element.classList.togle("OFF","ON");	// if swaps tokens if either is present, `
-`											//	 returns 1 if contains("OFF") in end`
-`											//	 returns 2 if contains("ON") in end`
-`											// if neither is present, no toggle occurs, returns 0`
+`	element.classList.togle("OFF","ON");	// swaps tokens if either is present, 
+						//	 returns 1 if contains("OFF") in end
+						//	 returns 2 if contains("ON") in end
+						// if neither is present, no toggle occurs, returns 0
+`
 
 Finally, during the execution of this upgrade of Element.classList prototype, it can be configured to 
 pre-pend or post-pend ALL class names with a one-time-specified string.  For both performance AND
@@ -43,7 +44,7 @@ For example, if defined with prepend string "this-is-my-app-"
 
 	document.getElementById('box').classList.add("draggable")
 
-will produce this:  `<div id="box" class="this-is-my-app-draggable">...<div>`
+will produce this `<div id="box" class="this-is-my-app-draggable">...<div>`
 
 while at the same time,
 
@@ -53,7 +54,7 @@ will return TRUE, and
 
 	document.getElementById('box').classList.toggle("draggable")
 
-will produce this: `<div id="box" class="">...<div>`
+will produce this `<div id="box" class="">...<div>`
 
 WARNING:  The 'pre/post-pend' feature may or may NOT break other frameworks that rely on 
 Element.classList.  It will definitely break code/frameworks that work with seperately marked-up HTML 
