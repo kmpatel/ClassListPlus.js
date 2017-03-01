@@ -12,7 +12,7 @@ USAGE:
 	element.classList.remove("native");
 	element.classList.remove("also","native","form");
 
-	element.classList.toggle("native");			// toggles and return (element.classList.contains("native"))
+	element.classList.toggle("native");		// toggles and return (element.classList.contains("native"))
 	element.classList.toggle("native",true);	// adds and returns true
 	element.classList.toggle("native",false);	// removes and returns false
 }
@@ -21,9 +21,9 @@ USAGE:
 Improves on native Element.classList, and polyfill if necessary, namely to allow 
 multiple class tokens in a single, space-delimited string.
 
-{ e.g.
-	element.classList.add("not native form");		// adds all 3 tokens: "not" "native" and "form"
-	element.classList.remove("not native form");	// removes all 3 tokens: "not" "native" and "form"
+{
+`	element.classList.add("not native form");	// adds all 3 tokens: "not" "native" and "form"`
+`	element.classList.remove("not native form");	// removes all 3 tokens: "not" "native" and "form"`
 }
 
 This tweak of classList also upgrades .toggle() by allowing a class to be toggle
@@ -31,13 +31,12 @@ between two specific names (e.g. ON and OFF). This is useful for making CSS styl
 explicit-explicit, like 'on'-'off' or 'expand'-'collapse' rather than implicit-explicit, like
 ''-'collapse'.  It will ONLY toggle if either of the names are present, and will replace with 
 the other.  It is an alternative approach to .toggle(arg,force)
+ 
+`	element.classList.togle("OFF","ON");	// if swaps tokens if either is present, `
+`											//	 returns 1 if contains("OFF") in end`
+`											//	 returns 2 if contains("ON") in end`
+`											// if neither is present, no toggle occurs, returns 0`
 
-{ e.g. 
-	element.classList.togle("OFF","ON");	// if swaps tokens if either is present, 
-											//	 returns 1 if contains("OFF") in end
-											//	 returns 2 if contains("ON") in end
-											// if neither is present, no toggle occurs, returns 0
-}
 
 Finally, during the execution of this upgrade of Element.classList prototype, it can be configured to 
 pre-pend or post-pend ALL class names with a one-time-specified string.  For both performance AND
@@ -45,12 +44,11 @@ safety, these strings are specified at the beginning, and cannot be changed with
 If selective application of pre/post-pend is needed, it should be done at in the application code.  
 This could be useful when to add a namespace to you CSS, HTML obfuscation, or trademarking HTML 
 markup while still making the Javascript code human-readable.
-{ e.g.  if defined with prepend string "this-is-my-app-"
+For example, if defined with prepend string "this-is-my-app-"
 
 	document.getElementById('box').classList.add("draggable")
 
-will produce this:
-	<div id="box" class="this-is-my-app-draggable">...<div>
+will produce this:  `<div id="box" class="this-is-my-app-draggable">...<div>`
 
 while at the same time,
 
@@ -60,10 +58,7 @@ will return TRUE, and
 
 	document.getElementById('box').classList.toggle("draggable")
 
-will produce this:
-	<div id="box" class="">...<div>
-
-}
+will produce this: `<div id="box" class="">...<div>`
 
 WARNING:  The 'pre/post-pend' feature may or may NOT break other frameworks that rely on 
 Element.classList.  It will definitely break code/frameworks that work with seperately marked-up HTML 
