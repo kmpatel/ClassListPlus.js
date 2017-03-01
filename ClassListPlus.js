@@ -15,9 +15,9 @@ const classPostPendString = '';	// define your post-pend string here
 
    if ( classPrePend || classPostPend ) {
       $pend        = function(str) { return str.replace(/\b[^\s]+\b/g,function(s){return template.replace('__##__',s)})  };
-      argsToString = function(arg) { return String.trim( $pend([].concat.apply([],arg).join(' ')) ); };
+      argsToString = function(arg) { return String.trim( $pend([].concat.apply([],arg).join(' ')) );     };
    } else
-      argsToString = function(arg) { return String.trim([].concat.apply([],arg).join(' '));           };
+      argsToString = function(arg) { return String.trim([].concat.apply([],arg).join(' '));              };
 
    // 'arg' is an 'arguments' object (an array of strings) from another function
    const argsToArray   = function(arg) { var str = argsToString(arg); return str ? str.split(/\s+/g):[]; };
@@ -68,11 +68,11 @@ const classPostPendString = '';	// define your post-pend string here
       DOMTokenList.prototype.toggle = function(arg1,arg2) {
          if (arg2 == null) 
             return _toggle.call(this,$pend(String.trim(arg1)));
-         if (typeof arg2 == 'string')   // if both arg string, if arg1 or arg2 is present, swap
+         if (typeof arg2 == 'string')   // if both args are string and one is present, replace one for the other
                  if (this.contains(arg1)) return ((this.replace(arg1,arg2)) || 2);   // return 2 (second arg)
             else if (this.contains(arg2)) return ((this.replace(arg2,arg1)) || 1);   // return 1 (first arg)
             else return 0;   // return 0 (no args found, no toggle occured)
-         else   // if arg2 == true, add arg1 else remove arg1, return if arg1 is present at end of operation
+         else   // if arg2 == true, add arg1 else remove arg1, return equivalent of this.contains(arg1)
             return arg2 ? ( this.add(arg1) || true ) : ( this.remove(arg1) || false );
       };
    }; // upgradeDOMTokenList
@@ -99,10 +99,10 @@ const classPostPendString = '';	// define your post-pend string here
                remove  : function(args) { _replace.call(my, argsToString(arguments), '' );  },
 
                replace : function(arg1,arg2) { 
-               			arg1 = $pend( String.trim(arg1) );
-               			arg2 = $pend( String.trim(arg2) );
-               			_replace.call(my, arg1, arg2);
-               		},
+                     arg1 = $pend( String.trim(arg1) );
+                     arg2 = $pend( String.trim(arg2) );
+                     _replace.call(my, arg1, arg2);
+                  },
 
                toggle    : function(arg1,arg2) { 
                      if (arg2 == null) 
