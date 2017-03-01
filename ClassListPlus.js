@@ -44,12 +44,12 @@ const classPostPendString = '';	// define your post-pend string here
          };
       } else {
          DOMTokenList.prototype.add = function(args){
-            const list = argsToArray(arguments);  // combine all arguments (except first) into array   
+            const list = argsToArray(arguments);
             for (var i=0,I=list.length; i<I; i++)
                _add.call(this,list[i]);
          };
          DOMTokenList.prototype.remove = function(args) {
-            const list = argsToArray(arguments);  // combine all arguments (except first) into array   
+            const list = argsToArray(arguments); 
             for (var i=0,I=list.length; i<I; i++)
                _remove.call(this,list[i]);
          };
