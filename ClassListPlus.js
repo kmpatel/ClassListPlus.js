@@ -23,10 +23,10 @@ const classPostPendString = '';	// define your post-pend string here
    var argsToArray  = function(arg) { var str = argsToString(arg); return str ? str.split(/\s+/g):[]; };
    var upgradeDOMTokenList = function() {
 
-      var _add      = DOMTokenList.prototype.add;
-      var _remove   = DOMTokenList.prototype.remove;
-      var _toggle   = DOMTokenList.prototype.toggle;
-      var _contains = DOMTokenList.prototype.contains;
+      const _add      = DOMTokenList.prototype.add;
+      const _remove   = DOMTokenList.prototype.remove;
+      const _toggle   = DOMTokenList.prototype.toggle;
+      const _contains = DOMTokenList.prototype.contains;
 
       // use a SVG as test element, IE does not have classList for this item
       var probe = document.createElementNS("http://www.w3.org/2000/svg", "svg").classList;
