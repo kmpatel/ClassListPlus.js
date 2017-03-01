@@ -28,10 +28,10 @@ explicit-explicit, like 'on'-'off' or 'expand'-'collapse' rather than implicit-e
 ''-'collapse'.  It will ONLY toggle if either of the names are present, and will replace with 
 the other.  It is an alternative approach to .toggle(arg,force)
  
-`	element.classList.togle("OFF","ON");	// swaps tokens if either is present, 
-						//	 returns 1 if contains("OFF") in end
-						//	 returns 2 if contains("ON") in end
-						// if neither is present, no toggle occurs, returns 0
+`	element.classList.togle("OFF","ON");	// replace one token for another, if either is present, 
+						   returns 1 if replaced with OFF
+						   returns 2 if replaced with ON
+						   return 0 if neither is present, no toggle occurs
 `
 
 Finally, during the execution of this upgrade of Element.classList prototype, it can be configured to 
@@ -57,8 +57,8 @@ will return TRUE, and
 will produce this `<div id="box" class="">...<div>`
 
 WARNING:  The 'pre/post-pend' feature may or may NOT break other frameworks that rely on 
-Element.classList.  It will definitely break code/frameworks that work with seperately marked-up HTML 
-(i.e. with element already given class names).  If each function/object/framework/etc consistently 
-works with class names either by Element.classList or by Element.className but NOT both simultaneously, 
-then there should not be any problems, including working with third-party frameworks.  
-If in doubt, however, do NOT use pre/post-pend.
+`Element.classList`.  It will definitely break code/frameworks that work with seperately marked-up HTML 
+(i.e. with element already given class names) or mixes use of `Element.classList` and `Element.className`.  
+If each function/object/framework/etc consistently works with class names either by `Element.classList` 
+or by `Element.className` but NOT both simultaneously, then there should not be any problems, including 
+working with third-party frameworks.  If in doubt, however, do NOT use pre/post-pend.
