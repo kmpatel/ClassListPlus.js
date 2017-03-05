@@ -11,7 +11,7 @@ classListConfig = {
 (function(cfg) {
    "use strict";
    
-  //  ------------------------------------------- primary function ---------------------------------------------- 
+  //  ------------------------------------------- primary function -----------------------------------------// 
 
    function emulateDOMTokenList(element) {
 
@@ -127,22 +127,22 @@ classListConfig = {
                if (property.set) obj.__defineSetter__(name,property.set);
             };
 
-  // arguments parsing helpers 
-  const    rgxSpaces  = /\s+/g;         // all whitespace Regexp
-  const    rgx2words  = /[^\s]\s+[^\s]/; // find two words
-  const      rgxWord  = /\b([^\s]+)\b/g;  // whole word RegExp
-
-  const   _concat = Array.prototype.concat.bind([]);
-  const _toString = function(args) { return _concat.apply(null,args).join(' ').trim();      };
-  const  _toArray = function(args) { return (args = _toString(args)) && args.split(rgxSpaces); };
-
   // helper RegExp
+  const  rgxSpaces  = /\s+/g;           // all whitespace Regexp
+  const  rgx2words  = /[^\s]\s+[^\s]/;  // find two words
+  const    rgxWord  = /\b([^\s]+)\b/g;  // whole word RegExp
+
+  // arguments parsing helpers 
+  const     _concat = Array.prototype.concat.bind([]);
+  const   _toString = function(args) { return _concat.apply(null,args).join(' ').trim();      };
+  const    _toArray = function(args) { return (args = _toString(args)) && args.split(rgxSpaces); };
+  
+  // class name decoration
   const   classPre  = cfg.nameDecorate ? cfg.nameDecorate.pre  : '';
   const   classPost = cfg.nameDecorate ? cfg.nameDecorate.post : '';
 
   const rgxDecorate = cfg.nameDecorate &&    new RegExp ( '\\b'+classPre+'([^\\s]+)'+classPost+'\\b', 'g'        );
   const hlpDecorate = classPre+'$1'+classPost;
-  // const hlpDecorate = cfg.nameDecorate && function(m)   { return m.match(rgxDecorate) ? m : classPre+m+classPost };
 
   const    decorate = cfg.nameDecorate 
                       ? function(str) { return str.replace(rgxWord, hlpDecorate);  }
